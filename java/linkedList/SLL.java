@@ -68,8 +68,27 @@ public class SLL{
     // insertion by recursion at particular index
 
     public void insertRecur(int val, int index){
-        
+        head = insertRecur(val, index, head);
+    
+    } //Yeh method public interface hai jo directly user ya main function se call
+    // hota hai. Iska kaam sirf itna hai ki yeh recursion ko start kare aur first node (head) ke saath call kare.
+
+    private Node insertRecur(int val, int index, Node node){
+        if(index == 0){
+            //Base Case: Jab index == 0 ho jata hai, toh hum ek new node create 
+            //karte hain  aur uska next pointer node par set kar dete hain.
+            Node temp = new Node(val,node);
+            size++;
+            return temp;
+        }
+        //Recursive Case: Agar index == 0 nahi hai, toh function apne aage ke 
+        //node ko (node.next) ke saath insertRecur(val, index-1, node.next) ko 
+        //call karta hai aur is process ko tab tak continue karta hai jab tak 
+        //index zero na ho jaye.
+        node.next = insertRecur(val, index-1, node.next);
+        return node;
     }
+
 
     public void display(){
         Node temp = head;
@@ -78,5 +97,19 @@ public class SLL{
             temp= temp.next;
         }
         System.err.println("END");
+    }
+    
+    public Node deleteDublicate(){
+        Node current = head;
+        
+        
+        while (current != null && current.next != null) {
+            if (current.val == current.next.val) {
+                current.next = current.next.next; 
+            } else {
+                current = current.next; // Move to the next node
+            }
+        }
+        return current;
     }
 }

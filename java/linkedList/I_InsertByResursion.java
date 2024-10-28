@@ -4,6 +4,7 @@ public class I_InsertByResursion {
         list.insertAtFirst(15);
         list.insertAtFirst(19);
         list.insertAtFirst(18);
+        list.insertRecur(88,2);
         list.display();
 
     }
