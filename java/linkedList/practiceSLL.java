@@ -74,7 +74,7 @@ public class practiceSLL {
 
 
 
-    //question 2 :  Remove duplicates from the linked list
+    //question 1 :  Remove duplicates from the linked list
     public void deleteDublicate() {
         Node current = head; // Start with the head of the list
         while (current != null && current.next != null) {
@@ -120,6 +120,45 @@ public class practiceSLL {
         return ans;
 
     }
+
+    // question 3 : detect cycle in LL 
+    public boolean hasCycle(Node head){
+        Node fast = head;
+        Node slow = head;
+
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast == slow){
+                return true;
+            }
+        }
+        return false;
+    }
+
+//   Question 4: length of the cycle 
+
+    public int lengthCycle(Node head){
+        Node fast= head;
+        Node slow= head;
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next.next;
+            if(fast == slow){
+                // calculate length
+                Node temp = slow;
+                int length=0;
+                do{
+                    temp = slow.next;
+                    length ++;
+
+                }while(temp != slow);
+                return length;
+            }
+        }
+        return 0;
+    }
+
 
     public static void main(String[] args) {
         // practiceSLL list = new practiceSLL(); 
