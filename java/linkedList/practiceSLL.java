@@ -1,12 +1,10 @@
 public class practiceSLL {
     private Node head;
     private Node tail;
-    private int size;
-
+    
     public practiceSLL() {
         this.head = null; // Initialize head to null
         this.tail = null; // Initialize tail to null
-        this.size = 0;    // Initialize size to 0
     }
 
     // Node class definition
@@ -34,7 +32,6 @@ public class practiceSLL {
         if (tail == null) { // If the list was empty, update tail
             tail = node;
         }
-        size++;
     }
 
     public void insertAtLast(int val){
@@ -45,7 +42,6 @@ public class practiceSLL {
         Node node = new Node(val);
         tail.next = node;
         tail=node;
-        size++;
     }
     // Recursive insertion at a specific index
     public void insertRecur(int val, int index) {
@@ -55,7 +51,6 @@ public class practiceSLL {
     private Node insertRecur(int val, int index, Node node) {
         if (index == 0) {
             Node temp = new Node(val, node); // Create new node
-            size++;
             return temp; // Return new node
         }
         node.next = insertRecur(val, index - 1, node.next); // Recurse for next node
@@ -101,11 +96,9 @@ public class practiceSLL {
             if(f.val < s.val){
                 ans.insertAtLast(f.val);
                 f= f.next;
-                size++;
             }else{
                 ans.insertAtLast(s.val);
                 s= s.next;
-                size++;
             }
         }
         while(f!=null){
