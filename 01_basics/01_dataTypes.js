@@ -46,3 +46,59 @@ console.log(strInNum); //NaN
 
 // "33"=>33
 // "33abs" =>NaN
+
+
+// ********************* operations ***************************
+
+let st1 ="hello"
+let st2 = "Neha"
+let st3 = st+st2;
+console.log(st3);   // hello Neha
+
+console.log("1" + 2);  //12
+console.log(1 + "2");  //12 
+
+console.log("1" + 2 +2);  //122
+
+console.log(2 + 2 + "1");  //41
+
+console.log(+true); //1
+console.log(+"");  //0
+
+let x = 3;
+const y = x++;
+
+console.log(`x:${x}, y:${y}`);
+// Expected output: "x:4, y:3"
+
+let a = 3;
+const b = ++a;
+
+console.log(`a:${a}, b:${b}`);
+// Expected output: "a:4, b:4"
+
+
+//  ********************** comparison *****************************
+
+console.log("2" == 2); //true
+
+console.log(null > 0); //false
+console.log(null == 0); //false
+console.log(null >= 0); //true
+
+
+console.log(undefined == 0); //false
+console.log(undefined > 0); //false
+console.log(undefined < 0); //false
+
+
+//  strict checking ===  checks the datatypes too 
+
+console.log("2" === 2); //false     must do strct comparison and does not prefer ==
+
+
+
+
+
+
+
