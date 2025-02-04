@@ -1,6 +1,9 @@
 // JavaScript arrays are resizable and can contain a mix of different data types.
 // JavaScript array-copy operations create shallow copies
 
+// there is major diffrence between array of java and js: 
+            //   Arrays in Java are statically typed, meaning you must declare the data type of the elements the array will hold when you create it. All elements in the array must be of the same type.
+            // Arrays in JavaScript are dynamic and can hold elements of any data type. You can mix strings, numbers, objects, and even other arrays within the same array.
 // SHALLOW COPY
 
 // A shallow copy of an object is a copy whose properties share the same references (point to the same underlying values) 
