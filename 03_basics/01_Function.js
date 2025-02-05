@@ -49,7 +49,7 @@ function shoppingCart(...num1){      // here ... are use to create rest
 function shoppingCart(val1, val2, ...num1){      // here ... are use to create rest
     return num1
 }
-console.log(shoppingCart(200, 300, 400,2000,5000));    //[ 400, 2000, 5000 ]:  
+//console.log(shoppingCart(200, 300, 400,2000,5000));    //[ 400, 2000, 5000 ]:  
 
 //this is bcz val1 have taken 200 and val2 = 300 ,left numbers are returned into num
 
@@ -59,7 +59,31 @@ console.log(shoppingCart(200, 300, 400,2000,5000));    //[ 400, 2000, 5000 ]:
 //objects in function
 
 const user = {
-    name:"Neha",
+    username:"Neha",
     age:223
 }
+
+function handleObject(anyobject){
+    console.log(`Username is ${anyobject.username} and age is ${anyobject.age}`);
+    
+}
+//handleObject(user);           //Username is Neha and age is 223
+
+//(No need to compulsory create an object first and only then pass it , can also create an object during function call)
+/*
+handleObject({
+    username:"Sam",
+    age:23
+})                  //Username is Sam and age is 23  
+*/
+
+// can also pass array 
+
+const myNewArray = [200, 300 ,400]
+function returnSecondValue(getArray){        // same as object pass getArray for general calling from any array or object not only the one we have created 
+    return getArray[1]
+}
+
+//console.log(returnSecondValue(myNewArray));     //300
+//console.log(returnSecondValue([200, 400, 600]));        //400
 
