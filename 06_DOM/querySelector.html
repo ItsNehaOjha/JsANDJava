@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg-black {
+            background-color: #212121;
+            color: white;
+        }
+        p {
+            font-size: 2em;
+            color: red;
+        }
+      </style>
+</head>
+<body>
+    <p>🔴 When you use querySelectorAll(), you get a NodeList, not an Array.
+        Since NodeList is NOT a real array, some array methods like .map(), 
+        .filter(), and .reduce() will NOT work directly.
+    </p>
+    <div class="i">
+        🔹 Important Takeaways <br>
+        1️⃣ querySelectorAll() returns a NodeList (NOT an array). <br>
+        2️⃣ NodeList only supports .forEach(), but not .map(), .filter(), etc. <br>
+        3️⃣ Convert it to an array using: <br>
+        by : Array.from(nodeList) or [...nodeList] <br>
+        let arrayList = Array.from(nodeList); <br>
+        OR <br>
+        let arrayList = [...nodeList]; // Spread syntax <br><br>
+
+        4️⃣ HTMLCollection is different from NodeList! (getElementsByClassName() 
+ returns a live HTMLCollection, but querySelectorAll() returns a static NodeList).  <br>
+
+ <h2>🔹 Selecting Elements with NodeList</h2>
+A NodeList is a collection of nodes (elements) returned by methods like 
+querySelectorAll(). You can access individual elements and manipulate them in different ways.
+
+
+
+    </div>
+    <ul>
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+    </ul>
+
+    <h2>
+        <code>
+            let nodeList = document.querySelectorAll(".item"); // Returns a NodeList
+
+    console.log(nodeList); // NodeList(3) [li, li, li]  <br>
+
+    // ✅ Accessing individual elements using index   <br>
+    console.log(nodeList[0]); 
+    // First li element  <br>
+    console.log(nodeList[1]); 
+    // Second li element  <br>
+
+        </code>
+    </h2>
+    
+   
+    
+</body>
+<script>
+    let ulList = document.querySelectorAll("ul"); // Returns a NodeList
+
+    console.log(ulList); // NodeList(2) [ul, ul]
+
+    // ✅ Works: Using forEach() (NodeList supports it)
+
+    ulList.forEach(ul => console.log(ul.innerHTML));
+
+    // ❌ Doesn't Work: Using map() (NodeList does NOT support it)
+    // ulList.map(ul => console.log(ul.innerHTML)); // ERROR ❌
+
+    // ✅ Convert to Array and Use map()
+    let ulArray = Array.from(ulList);
+    let texts = ulArray.map(ul => ul.innerHTML);
+    console.log(texts);
+</script>
+</html>

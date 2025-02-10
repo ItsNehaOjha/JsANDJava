@@ -5,14 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dom learning</title>  
      <!-- title have text node -->
+      <style>
+        .bg-black {
+            background-color: #212121;
+            color: white;
+        }
+        .heading {
+            font-size: 2em;
+            color: red;
+        }
+      </style>
 </head>
-<body>
-    <div class="bg-black">
+<body  class="bg-black">
+    <div id="title">
         <h1 class="heading">DOM learning with chai</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex aspernatur esse maxime atque? Suscipit.</p>
+        
+           <div id="example1" class="box"></div>
+    <div id="example2" class="box"></div>
+    <div id="example3" class="box"></div>
+    
     </div>
 </body>
 <script>
 
+    // 1. getElementById()
+    // document.getElementById("id") is used to select an element by its ID.
+    // It returns a single element (since IDs are unique in a document).
+
+    document.getElementsByClassName('heading').innerHTML = "NEHA PAGE";
+
+    // 2. getElementsByClassName()
+    // document.getElementsByClassName("class") is used to select elements by their class name.
+    // It returns a collection of elements (since multiple elements can have the same class).
+
+//     Modifying Content
+// .innerHTML → Sets/gets HTML inside an element.
+// .innerText → Gets/sets visible text (ignores hidden content).
+// .textContent → Gets/sets all text content, even hidden text.
+
+//     Modifying Attributes
+// .getAttribute("attr") → Gets the value of an attribute.
+// .setAttribute("attr", "value") → Sets the value of an attribute.
+// .removeAttribute("attr") → Removes an attribute.
+
+//     Modifying Styles
+// .style.property → Sets/gets a single CSS property.
+// .style.cssText → Sets/gets all CSS properties.
+// .classList → Adds/removes/toggles CSS classes.
+
+// Adding & Removing Elements
+// element.appendChild(newElement) → Adds a child to an element.
+// element.removeChild(childElement) → Removes a child.
+// element.innerHTML = "" → Clears content inside an element.
+
+// 3. Differences Between innerHTML, innerText, and textContent
+// innerHTML → Includes all HTML tags and content.
+// innerText → Includes only visible text.
+// textContent → Includes all text, including hidden text.
+
+let div = document.getElementById("title");
+div.innerHTML = "<b>Hello</b>"; // Renders: **Hello**
+div.innerText = "<b>Hello</b>"; // Displays: <b>Hello</b> (as plain text)
+div.textContent = "<b>Hello</b>"; // Displays: <b>Hello</b> (as plain text)
+
+
+// 🔴 When you use querySelectorAll(), you get a NodeList, not an Array.
+// Since NodeList is NOT a real array, some array methods like .map(), .filter(), 
+// and .reduce() will NOT work directly.
+
 </script>
 </html>
+
+

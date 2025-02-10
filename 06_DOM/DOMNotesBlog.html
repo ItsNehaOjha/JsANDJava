@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selectors - Understanding NodeList & HTMLCollection</title>
+    <style>
+        body {
+            background-color: #343541;
+            color: #ECECF1;
+            font-family: "Arial", sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #00A67E;
+            padding: 10px 0;
+            display: block;
+        }
+        .highlight {
+            color: #212121;
+            padding: 5px;
+            border-radius: 8px;
+        }
+        pre {
+            background: #40414F;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            color: #ECECF1;
+        }
+        .redColor {
+            color: #FF6D60;
+            font-weight: bold;
+        }
+        ul, p {
+            font-size: 1.2em;
+        }
+        .code-block {
+            background-color: #40414F;
+            padding: 15px;
+            border-radius: 10px;
+            color: #ECECF1;
+            font-family: monospace;
+        }
+        .highlightGreen{
+            background-color: #00A67E;
+            padding: 7px;
+            border-radius: 5px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Understanding DOM Selectors: NodeList & HTMLCollection</h1>
+    <p>The Document Object Model (DOM) allows JavaScript to interact with HTML elements. Here, we explore different ways to select elements and manipulate them dynamically.</p>
+    
+    <h2>1️⃣ Selecting Elements by ID</h2>
+    <p>Use <code>document.getElementById("yourID")</code> to get a single element by ID.</p>
+    <pre class="code-block">const title = document.getElementById("title");
+title.style.color = "blue";</pre>
+    <h2 id="title">This is a Title</h2>
+    
+    <h2>2️⃣ Selecting Elements by Class Name</h2>
+    <p>Use <code>document.getElementsByClassName("className")</code> to get multiple elements.</p>
+    <pre class="code-block">const items = document.getElementsByClassName("item");
+if (items.length > 0) {
+    items[0].style.color = "red";
+}</pre>
+    <ul>
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+    </ul>
+    
+    <h2>3️⃣ Query Selectors</h2>
+    <p>Use <code>document.querySelector("selector")</code> to get the <span class="redColor"> first match </span> and <code>querySelectorAll("selector")</code> to get all matches.</p>
+    <pre class="code-block">const headings = document.querySelectorAll("h2");
+headings.forEach(h => h.style.color = "#00A67E");</pre>
+        <p>Effect: All h2 elements will now have their color changed to <span class="highlightGreen">green (#00A67E)</span>.</p>  
+    
+    <h2>4️⃣ Understanding NodeList vs HTMLCollection</h2>
+    <ul>
+        <li><strong>NodeList:</strong> Returned by <code>querySelectorAll</code>, supports <code>forEach</code> but not array methods like <code>map</code>.</li>
+        <li><strong>HTMLCollection:</strong> Returned by <code>getElementsByClassName</code>, does not support <code>forEach</code>.</li>
+        <li>Convert them to an array using <code>Array.from()</code> to use array methods.</li>
+    </ul>
+    <pre class="code-block">const nodeListExample = document.querySelectorAll("h2");
+nodeListExample.forEach(el => el.classList.add("highlight"));
+
+const htmlCollectionExample = document.getElementsByClassName("item");
+Array.from(htmlCollectionExample).forEach(el => el.style.fontWeight = "bold");</pre>
+    
+    <script>
+        // Example of Selecting by ID
+        const title = document.getElementById("title");
+        title.style.color = "blue";
+
+        // Example of Selecting by Class Name
+        const items = document.getElementsByClassName("item");
+        if (items.length > 0) {
+            items[0].style.color = "red";
+        }
+        
+        // Example of Query Selectors
+        const headings = document.querySelectorAll("h2");
+        headings.forEach(h => h.style.color = "#00A67E");
+
+        // Example of NodeList vs HTMLCollection
+        const nodeListExample = document.querySelectorAll("h2");
+        nodeListExample.forEach(el => el.classList.add("highlight"));
+
+        const htmlCollectionExample = document.getElementsByClassName("item");
+        Array.from(htmlCollectionExample).forEach(el => el.style.fontWeight = "bold");
+    </script>
+</body>
+</html>
