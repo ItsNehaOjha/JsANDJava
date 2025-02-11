@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: #212121;
+        color: #fff;
+    }
+</style>
+<body>
+    
+</body>
+<script>
+    const div =document.createElement('div');
+    console.log(div);
+    div.classNae= "main"
+    div.id = Math.round(Math.random()*10 + 1)
+    //custom attributes
+    div.setAttribute('title', 'generated attribute')
+    div.style.backgroundColor = 'green'
+    div.style.paddding = '20px'
+
+    //div.innerText = "Chai aur code" // this is not optimised bcz it always overwrite the text
+
+    //preferable way to innerText
+
+    const addText = document.createTextNode("chai Aur Code ")
+    div.append(addText)
+
+    //atttaching of the div 
+    document.body.appendChild(div)
+</script>
+</html>

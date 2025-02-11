@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Elements</title>
+</head>
+<style>
+    body {
+            background-color: #343541;
+            color: #ECECF1;
+            font-family: "Arial", sans-serif;
+            margin: 20px;
+            padding: 20px;
+            
+        }
+    h1{
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    p{
+        font-size: 22px;
+        margin: 3rem;
+        padding: 12px;
+        padding-left: 20px;
+    }
+    code{
+        background: #40414F;
+        padding: 15px;
+        margin: 12px;
+        border-radius: 8px;
+        white-space: pre-wrap;
+        color: #ECECF1;
+    }
+    .box {
+            background: #40414F;
+            color: #ECECF1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            width: 60%;
+            font-size: 20px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        }
+        .btn {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #45a049;
+        }
+</style>
+<body >
+    <h1>Creating Elements with JavaScript</h1>
+    <p>Use <code>document.createElement("element")</code> to create new elements.</p>
+    <p>Use <code>element.appendChild(childElement)</code> to add a child element to a parent element.</p>
+    <p>Use <code>element.insertBefore(newElement, referenceElement)</code> to insert a new element before a reference element.</p>
+    <p>Use <code>element.replaceChild(newElement, oldElement)</code> to replace an old element with a new element.</p>
+    <p>Use <code>element.removeChild(childElement)</code> to remove a child element from a parent element.</p>
+    <p>Use <code>element.cloneNode(true)</code> to clone an element and its children.</p>
+    <p>Use <code>element.hasChildNodes()</code> to check if an element has child nodes.</p>
+    <p>Use <code>element.childNodes</code> to get a NodeList of child nodes.</p>
+    <p>Use <code>element.children</code> to get an HTMLCollection of child elements.</p>
+    <p>Use <code>element.firstElementChild</code> to get the first child element.</p>
+    <p>Use <code>element.lastElementChild</code> to get the last child element.</p>
+    <p>Use <code>element.previousElementSibling</code> to get the previous sibling element.</p>
+    <p>Use <code>element.nextElementSibling</code> to get the next sibling element.</p>
+    <p>Use <code>element.parentElement</code> to get the parent element.</p>
+    <p>Use <code>element.closest("selector")</code> to get the closest ancestor element that matches the selector.</p>
+    <p>Use <code>element.querySelector("selector")</code> to get the first descendant element that matches the selector.</p>
+    <p>Use <code>element.querySelectorAll("selector")</code> to get all descendant elements that match the selector.</p>
+    <p>Use <code>element.getAttribute("attribute")</code> to get the value of an attribute.</p>
+    <p>Use <code>element.setAttribute("attribute", "value")</code> to set the value of an attribute.</p>      
+    <p>Use <code>element.hasAttribute("attribute")</code> to check if an element has an attribute.</p>
+    <p>Use <code>element.removeAttribute("attribute")</code> to remove an attribute.</p>
+    <p>Use <code>element.classList.add("class")</code> to add a class to an element.</p>
+    <p>Use <code>element.classList.remove("class")</code> to remove a class from an element.</p>
+    <p>Use <code>element.classList.toggle("class")</code> to toggle a class on an element.</p>
+    <p>Use <code>element.classList.contains("class")</code> to check if an element has a class.</p>
+    <p>Use <code>element.style.property = "value"</code> to set a CSS property.</p>
+    <p>Use <code>element.style.removeProperty("property")</code> to remove a CSS property.</p>
+    <p>Use <code>element.style.cssText = "property: value; property: value;"</code> to set multiple CSS properties.</p>
+    <p>Use <code>element.style.setProperty("property", "value")</code> to set a CSS property with a priority.</p>
+    <p>Use <code>element.style.getPropertyValue("property")</code> to get the value of a CSS property.</p>
+    <p>Use <code>element.style.getPropertyPriority("property")</code> to get the priority of a CSS property.</p>
+    <p>Use <code>element.style.removeProperty("property")</code> to remove a CSS property.</p>
+    <p>Use <code>element.style.length</code> to get the number of CSS properties.</p>
+    <p>Use <code>element.style.item(index)</code> to get the property name at a specified index.</p>
+    <p>Use <code>element.style.getPropertyValue("property")</code> to get the value of a CSS property.</p>
+    <p>Use <code>element.style.setProperty("property", "value")</code> to set a CSS property with a priority.</p>
+    <p>Use <code>element.style.getPropertyPriority("property")</code> to get the priority of a CSS property.</p>
+    <p>Use <code>element.style.removeProperty("property")</code> to remove a CSS property.</p>
+    <p>Use <code>element.style.length</code> to get the number of CSS properties.</p>
+    <p>Use <code>element.style.item(index)</code> to get the property name at a specified index.</p>
+    <p>Use <code>element.style.getPropertyValue("property")</code> to get the value of a CSS property.</p>
+    <p>Use <code>element.style.setProperty("property", "value")</code> to set a CSS property with a priority.</p>
+
+
+    <h2>Click the button to create a new div element:</h2>
+    <button class="btn" onclick="createElement()">Click to Create Element</button>
+    <div id="output"></div>
+    <pre>
+
+            function createElement() {
+                
+                let newDiv = document.createElement("div");
+            
+                newDiv.classList.add("box");
+
+            
+                newDiv.textContent = "Hello! I am a dynamically created div using JavaScript.";
+
+            
+                document.getElementById("output").appendChild(newDiv);
+            }
+    </pre>
+</body>
+<script>
+    function createElement() {
+        // Create a new div element
+        let newDiv = document.createElement("div");
+        
+        // Add class to the new div
+        newDiv.classList.add("box");
+
+        // Add text content inside the div
+        newDiv.textContent = "Hello! I am a dynamically created div using JavaScript.";
+
+        // Append the new element to the output div
+        document.getElementById("output").appendChild(newDiv);
+    }
+</script>
+</html>
