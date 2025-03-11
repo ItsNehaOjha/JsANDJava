@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling vs Capturing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+        }
+        .container {
+            margin: 20px auto;
+            width: 60%;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .event-box {
+            padding: 20px;
+            border: 2px solid black;
+            margin: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .capturing {
+            background-color: rgba(255, 99, 71, 0.5); /* Light red */
+        }
+        .bubbling {
+            background-color: rgba(135, 206, 250, 0.5); /* Light blue */
+        }
+        .highlight {
+            background-color: yellow !important;
+        }
+        .message {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .red-text {
+            color: red;
+        }
+        .blue-text {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Event Bubbling vs Capturing</h1>
+        <p>Click the **Inner Box** to see event propagation.</p>
+
+        <div class="event-box" id="outer">
+            Outer Box (Capturing/Bubbling starts here)
+            <div class="event-box" id="middle">
+                Middle Box
+                <div class="event-box" id="inner">
+                    Inner Box (Click Here)
+                </div>
+            </div>
+        </div>
+
+        <p class="message" id="message">Click the inner box to see the event flow.</p>
+    </div>
+    <p>
+        This example highlights elements in <span class="red-text">red</span> during capturing and <span class="blue-text">blue</span> during bubbling. <br>
+        When you click the **Inner Box**, events travel in two phases:
+        <ul>
+            <li><strong>Capturing Phase:</strong> The event starts at the top (Outer Box) and moves down to the target (Inner Box).</li>
+            <li><strong>Bubbling Phase:</strong> After reaching the target, the event bubbles back up from Inner Box to Outer Box.</li>
+        </ul>
+        This example highlights elements in <span style="color: red;">red</span> during capturing and <span style="color: blue;">blue</span> during bubbling. <br>
+        The <code>event.stopPropagation()</code> method prevents further propagation in both phases.
+    </p>
+    <script>
+        function addHighlight(element, phase) {
+            element.classList.add(phase);
+            setTimeout(() => element.classList.remove(phase), 500);
+        }
+
+        function logMessage(message) {
+            document.getElementById("message").innerText = message;
+        }
+
+        document.getElementById("outer").addEventListener("click", function() {
+            addHighlight(this, "bubbling");
+            logMessage("Bubbling: Outer Box Triggered");
+        }, false); // Bubbling phase
+
+        document.getElementById("middle").addEventListener("click", function() {
+            addHighlight(this, "bubbling");
+            logMessage("Bubbling: Middle Box Triggered");
+        }, false);
+
+        document.getElementById("inner").addEventListener("click", function(event) {
+            addHighlight(this, "bubbling");
+            logMessage("Bubbling: Inner Box Clicked!");
+            event.stopPropagation(); // Prevents bubbling up
+        }, false);
+
+        document.getElementById("outer").addEventListener("click", function() {
+            addHighlight(this, "capturing");
+            logMessage("Capturing: Outer Box Triggered");
+        }, true); // Capturing phase
+
+        document.getElementById("middle").addEventListener("click", function() {
+            addHighlight(this, "capturing");
+            logMessage("Capturing: Middle Box Triggered");
+        }, true);
+
+        document.getElementById("inner").addEventListener("click", function(event) {
+            addHighlight(this, "capturing");
+            logMessage("Capturing: Inner Box Clicked!");
+            event.stopPropagation(); // Prevents further capturing
+        }, true);
+    </script>
+
+</body>
+</html>

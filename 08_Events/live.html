@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive HTML Events Blog</title>
+    <link rel="stylesheet" href="liveStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive HTML Events</h1>
+        <p>Click, hover, or interact with elements below to see events in action.</p>
+
+        <h2>Live JavaScript Editor</h2>
+        <labellabel for="codeEditor">JavaScript Code Editor:</label>
+        <textarea id="codeEditor" placeholder="Write JavaScript code here and click Run"></textarea>
+        <button onclick="runCode()">Run Code</button>
+        <pre id="codeOutput"></pre>
+
+        <h2>Image Gallery (Click to Interact)</h2>
+        <ul id="images">
+            <li><img id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg" alt="Photoshop"></li>
+            <li><img id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg" alt="Japan"></li>
+            <li><img id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg" alt="Owl"></li>
+            <li><img id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg" alt="River"></li>
+        </ul>
+
+        <h2>Event Demonstrations</h2>
+        <button id="changeText">Click to Change Text</button>
+        <p id="demoText">Watch this text change!</p>
+
+        <h2>Event Properties</h2>
+        <p>Click anywhere to see event details below:</p>
+        <div id="eventOutput">Event details will appear here...</div>
+
+        <h2>Theme Toggle</h2>
+        <button id="toggleTheme">Toggle Dark Mode</button>
+    </div>
+
+    <script>
+        // Run JavaScript Code from Editor
+        function runCode() {
+            let code = document.getElementById("codeEditor").value;
+            try {
+                let output = eval(code);
+                document.getElementById("codeOutput").innerText = output || "Code executed!";
+            } catch (error) {
+                document.getElementById("codeOutput").innerText = "Error: " + error.message;
+            }
+        }
+
+        // Change Text on Button Click
+        document.getElementById("changeText").addEventListener("click", function () {
+            document.getElementById("demoText").innerText = "Text has changed!";
+        });
+
+        // Show Event Properties
+        document.body.addEventListener("click", function (e) {
+            document.getElementById("eventOutput").innerHTML = `
+                <strong>Event Type:</strong> ${e.type} <br>
+                <strong>Timestamp:</strong> ${e.timeStamp} <br>
+                <strong>Clicked Element:</strong> ${e.target.tagName} <br>
+                <strong>Mouse Position:</strong> (${e.clientX}, ${e.clientY}) <br>
+                <strong>Keyboard Event:</strong> ${e.keyCode || 'N/A'}
+            `;
+        });
+
+        // Toggle Dark Mode
+        document.getElementById("toggleTheme").addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+        });
+
+    </script>
+</body>
+</html>

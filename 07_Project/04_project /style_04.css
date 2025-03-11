@@ -68,7 +68,17 @@ nav a[aria-current='page']{
     margin-top: 50px;
     /* margin-left: 75px; */
   }
-  
+  button {
+    background-color: #141414;
+    color: #fff;
+    width: 250px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 30px;
+    border-style: none;
+    margin-top: 30px;
+}
+
   #guessField {
     color: #000;
     width: 250px;

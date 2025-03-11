@@ -123,7 +123,8 @@ second() is added to the Call Stack.
 ✅ Hoisting
 During the creation phase, JS moves variable and function declarations to the top.
 */
-console.log(x);  // undefined (Hoisted)
+console.log(x);  // undefined (Hoisted): error nhi aai agar const se krte to error aata
+                 //== temporaral dead zone in the const case
 var x = 5;
 
 /*
@@ -163,7 +164,7 @@ counter(); // 2 (Remembers `count`)
 
 // Example 1: Basic Closure 🏆
 function outerFunction() {
-    let count = 0; // Local variable in outer function
+    let count = 0; // Local variable in outer functiong
 
     function innerFunction() {
         count++; // Inner function can access count

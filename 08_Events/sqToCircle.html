@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .click {
+            background-color: #414141;
+            color: aliceblue;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .dbclick {
+            color: aliceblue;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .code-container {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .copy {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .copy:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+   <div class="click">
+        <h1>hi</h1>
+   </div>
+
+   <div class="dbclick">
+        <button>Double Click Me</button>
+   </div>
+
+   <div class="code-container">
+        <button class="copy">Copy</button>
+        <pre id="code-text">
+you can copy this code by clicking on the copy button.
+        </pre>
+   </div>
+
+</body>
+
+<script>
+    // Click event: Creates a red circle at the click position
+    const click = document.querySelector('.click');
+    click.addEventListener('click', function(e) {
+        console.log(e);
+        console.log(e.x, e.y);
+        
+        const circle = document.createElement('div');
+        circle.style.width = '50px';
+        circle.style.height = '50px';
+        circle.style.backgroundColor = 'red';
+        circle.style.borderRadius = '50%';
+        circle.style.position = 'absolute';
+        circle.style.left = e.offsetX + 'px';
+        circle.style.top = e.offsetY + 'px';
+        
+        document.body.appendChild(circle);
+    });
+
+    // Double click event: Toggles background color between black and white
+    let toggle = false;
+    document.querySelector('.dbclick').addEventListener('dblclick', function() {
+        document.body.style.backgroundColor = toggle ? 'white' : 'black';
+        toggle = !toggle;
+    });
+
+    // Copy event: Copies text from <pre> to clipboard
+    document.querySelector('.copy').addEventListener('click', function() {
+        const text = document.getElementById('code-text').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Code copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+        });
+    });
+
+</script>
+</html>

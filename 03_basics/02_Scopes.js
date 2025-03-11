@@ -52,9 +52,10 @@ addOne(4)
 
 //expreesion methos :-
 
-const addTwo = function(num){
+const addTwo = function(num){     // this is function expression else the method is 
+// function decalaratoion and both are function definaition
     return num+2
-}
+} 
 addTwo(5)
 
 // ----------------------HOISTING ----------------------
