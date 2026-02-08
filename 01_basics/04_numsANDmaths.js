@@ -7,11 +7,11 @@ console.log(balance);   // [Number:100] : this will give some prototypes too of 
 console.log(balance.toString());
 console.log(typeof balance);  // string
 
-//fayeda ye hog KI AB string i properties bhi use kr skte h
+//fayeda ye hog KI AB string ki properties bhi use kr skte h
 
 console.log(balance.toString().length);   //3
 
-console.log(balance.toFixed(2)); //100.00
+console.log(balance.toFixed(2)); //100.00 // toFixed return a string with a number with a specified number of decimals
 
 // ******************   PRECISION AND TO LOCAL STRING CONVERSION ********************
 
@@ -37,10 +37,10 @@ console.log(Math.ceil(5.6));  //6
 console.log(Math.floor(5.6));  //5
 
 console.log((Math.random()*10 )+1);  //3.2771566280617916
-console.log(Math.floor((Math.random()*10 ))+1);  //10    : +1  to avoid 0 case
+console.log(Math.floor((Math.random()*10 ))+1);  //10    : +1  to avoid 0 case and include last digit too
 
 
-// for no bet 10 and 20
+// for number bet 10 and 20
 let min = 10
 let max = 20
 console.log(Math.floor(Math.random()* (max - min + 1) + min)) //11, 12,14 etc
@@ -49,13 +49,14 @@ console.log(Math.floor(Math.random()* (max - min + 1) + min)) //11, 12,14 etc
 //  Q : kya Pi ki value change ho sakti hai JS mei
 // ans is : PI me 
 writable=false   // defined hota h :ess property ki wajha se overwrite possible nhi hai... ye to explicitly bhi use kr sakti h
-// like name=neha
+// like name=nehe
 // then name ki property mei writable=false krdo
-// to fir pure program mei name ki value nick hi rhega
+// to fir pure program mei name ki value neha hi rhega
 
 // integers iterable nhi hote kyuki unme iteration=false hota hai
 
-
+// Math ke property hoti h : PI aur bhi bhut
+// check krne ke liye console me Math likhenge to start me sare property uske bad sare methods aa jayenge
 
 
 

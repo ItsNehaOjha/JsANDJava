@@ -84,7 +84,36 @@ console.log("2" == 2); //true
 
 console.log(null > 0); //false
 console.log(null == 0); //false
-console.log(null >= 0); //true
+console.log(null >= 0); //true     null >= 0 is true because relational comparisons (>=) coerce null to a number, and Number(null) is 0.
+ //So it becomes: 0 >= 0 → true.
+ 
+//  | Expression   | What happens                 | Result  |
+// | ------------ | ---------------------------- | ------- |
+// | `null >= 0`  | numeric coercion             | `true`  |
+// | `null > 0`   | numeric coercion             | `false` |
+// | `null == 0`  | special loose equality rules | `false` |
+// | `null === 0` | no coercion                  | `false` |
+
+
+// The key rule you MUST remember
+
+// Relational operators (< > <= >=) → numeric coercion
+// Equality (==) → special-case rules
+// Strict equality (===) → no coercion
+
+// These are three different engines inside JS, not one.
+
+// ***********  COERCION ****************
+// Coercion in JavaScript is the automatic conversion of one data type into another when an operation expects a specific type.
+
+
+null == undefined  // true
+null == 0          // false
+
+// Mental model (keep this in your head)
+// null means “no value”
+// But math forces it to become 0
+// Equality does not treat it as 0
 
 
 console.log(undefined == 0); //false
@@ -94,7 +123,7 @@ console.log(undefined < 0); //false
 
 //  strict checking ===  checks the datatypes too 
 
-console.log("2" === 2); //false     must do strct comparison and does not prefer ==
+console.log("2" === 2); //false     must do strict comparison and does not prefer ==
 
 
 
