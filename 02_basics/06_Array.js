@@ -58,16 +58,16 @@ console.log(arr1);    //[ '1', 'neha', 'ojha', [ 'snaeha', 'aman' ] ]   // here 
                  // CONCAT  : COMBINES TWO OR MORE ARRAY AND GIVE A NEW ARRAY
 
 const newArr1=["1","neha","ojha"];
-const newArr2 = ["snaeha","aman"];
+const newArr2 = ["sneha","aman"];
 const newAr = newArr1.concat(newArr2);
-console.log(newAr);             //[ '1', 'neha', 'ojha', 'snaeha', 'aman' ]
+console.log(newAr);             //[ '1', 'neha', 'ojha', 'sneha', 'aman' ]
 
 //one more method ==           SPREAD                     (used for adding more then two array easily)
 
 const spreadArr1=["1","neha","ojha"];
-const  spreadArr2= ["snaeha","aman"];
+const  spreadArr2= ["sneha","aman"];
 const spreadArr = [...spreadArr1, ...spreadArr2];
-console.log(spreadArr);               //[ '1', 'neha', 'ojha', 'snaeha', 'aman' ]
+console.log(spreadArr);               //[ '1', 'neha', 'ojha', 'sneha', 'aman' ]
 
 
 
