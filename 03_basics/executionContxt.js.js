@@ -11,12 +11,13 @@
 //2: How JavaScript executes code (line by line).
 //3: How scopes and this work.
 
-// When JavaScript code runs, it goes through two phases:
-// 1️⃣ Types of Execution Contexts
+
+// ⛔  Three Types of Execution Contexts
+
 //🟡 1. Global Execution Context (GEC):
 // Created when a JavaScript file runs.
 // Stores global variables and functions.
-// It is the default execution context (referred to as this in browsers).
+// It is the default execution context (referred to as 'this' in browsers).
 
 console.log(this);  // In browsers, `this` refers to `window`
 
@@ -24,7 +25,7 @@ console.log(this);  // In browsers, `this` refers to `window`
 // 🟡 2. Function Execution Context (FEC):
 // Created whenever a function is called.
 // Each function gets its own execution context.
-// Has its own variable environment and this value.
+// Has its own variable environment and 'this' value.
 
 function greet() {
     let name = "Neha";
@@ -32,25 +33,95 @@ function greet() {
 }
 greet();  // Creates a new execution context
 
+// 🟡 3. Eval ececution context: not so imp, mostly is in mongoose documentation
 
-// 2️⃣ Execution Context Phases
+
+// ⛔ 2 main Execution Context Phases
 
 /*
 Every execution context goes through two phases:
 
-🔵1. Creation Phase (Memory Allocation)
+🔵1. Creation Phase (Memory Allocation)  || OR Memory creaation phase
 JS scans the code before execution and:
 Assigns undefined to variables (var).
 Stores function definitions in memory.
 Sets this and arguments object.
+ jitne bhi var honge ya use hue h bas unke liye memory assign hoti h koi bhi execution jese
+ +, -, multiply aesa kuch nhi hota is phase m
 
 🔵2. Execution Phase (Code Runs)
 JavaScript executes the code line by line.
 Assigns values to variables and executes functions.
 
+ab is phase me sare execution hote h
+
+                            ****need to understand how a code execute ****
+Eg.  for practice try to explain the execution process of following code explaining phases roles
+ */
+let val1 = 10;  // line 1
+let val2 = 5;    // line 2
+function addnum(num1, num2){    // line 3
+    let total = num1 + num2;     // line 4
+    return total;                // line 5
+}
+let result1 = addnum(val1,val2);   // line 6
+let result2 = addnum(10, 2)      // line 7
+
+/*
+
+ab is code ke run hone pe following process hote h:
+step 1-> sabse pehle global execution /global environment hota h
+          sabse pehle koi bhi code run krna ho wo sapse pehle global execution se run hota h 
+          aur isko sabse pehle 'this' ke ander allocate hota h
+
+step 2->  Memory Creation Phase ->  sare variables ko iktha kiya jata h aur apne pas rakha 
+                                    jata h with default values 
+        from code ==>
+            val1 , val2 = undefined
+            addnum = function defination pura isme hi aata h 
+            result1, result2 = undefined
+    ---> first cycle
+
+step 3-> Execution phase :
+    line1     val1 <- 10
+    line2     val2 <- 5
+    line3    // no need to do anything for addnum since its definition is already given as it in
+        //  the memory creation phase
+    line6   result1 <-  "addnum" -> ek aur executional context banke tyar hota h jiske ander hoga:- 
+                          new variable environment + execution thread 
+                == jitni bar function call hota h utni bar "new executional context" banke tyar hota h 
+
+                -- to ab is nye addnum ke liye bhi dubara memory phase aur fir execution phase bhi hoga
+                -> memory phase-> 
+                                val1 <- undefined 
+                                val2 <- undesined 
+                                total <- undefined 
+                -> execution context->
+                                num1 <- 10
+                                num2  <- 5
+                                total <- 15  which will be returned to parent(global) executional context 
+                ---- after returning value this executional context will be deleted 
+ So  line6  result1  <-  15   
+    line7   result2  (again new executional context bna) 
+                                jiske ander hoga:- 
+                          new variable environment + execution thread 
+                == jitni bar function call hota h utni bar "new executional context" banke tyar hota h 
+
+                -- to ab is nye addnum ke liye bhi dubara memory phase aur fir execution phase bhi hoga
+                -> memory phase-> 
+                                num1 <- undefined 
+                                num2 <- undesined 
+                                total <- undefined 
+                -> execution context->
+                                num1 <- 10
+                                num2  <- 2
+                                total <- 12  which will be returned to parent(global) executional context 
+                ---- after returning value this executional context will be deleted 
+So line7   result2 <- 12
+            
 */
 
-// 3️⃣ Execution Stack (Call Stack)
+// ⛔ Execution Stack (Call Stack)
 /*
 JavaScript uses a stack (LIFO - Last In, First Out) to manage execution contexts.
 The Global Execution Context (GEC) is always at the bottom.
